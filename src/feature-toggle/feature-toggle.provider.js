@@ -10,27 +10,17 @@ export default class FeatureToggleProvider {
 
   /**
    *
-   * @param featureName
-   * @returns {string}
-   */
-  getFeatureState(featureName) {
-    if (this.features && this.features.length > 0) {
-      for (const feature of this.features) {
-        if (feature.name === featureName) {
-          return feature.state;
-        }
-      }
-    }
-    return null;
-  }
-
-  /**
-   *
-   * @returns {{isEnabled: isEnabled}}
+   * @returns {{featureToggle: state}}
    */
   $get() {
     return {
-      getFeatureState: featureName => this.getFeatureState(featureName)
+      getFeatureState: featureName => {
+        const result = this.features.find(feature => {
+          return featureName === feature.name;
+        });
+
+        return result ? result.state : null;
+      }
     };
   }
 }
