@@ -12,13 +12,9 @@ module.exports = function (grunt) {
 
     // Register Tasks
     grunt.registerTask('default', 'Start working on this project.', [
+        'clean',
+		'copy:dist',
         'jshint'
-	]);
-
-	// Bower
-	grunt.registerTask('bower', 'Build production ready assets and views.', [
-		'clean',
-		'copy:bower'
 	]);
 
     // Build

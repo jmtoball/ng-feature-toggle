@@ -159,7 +159,7 @@ var semver = require('semver');
     }
   }]);
 
-  ng.directive('showIfFeature', ['featureToggle', function (featureToggle) {
+  ng.directive('ngFeature', ['featureToggle', function (featureToggle) {
     var ddo = {
       restrict: 'AE',
       transclude: 'element',
@@ -170,19 +170,11 @@ var semver = require('semver');
 
     return ddo;
 
-    /**
-     *
-     * @param scope
-     * @param element
-     * @param attrs
-     * @param ctrl
-     * @param $transclude
-     */
     function link(scope, element, attrs, ctrl, $transclude) {
-      var featureEl, childScope, featureName;
+      var featureEl, childScope;
       var featureVersion = '*';
       var args = attrs.showIfFeature.split(/\s+/);
-      featureName = args[0];
+      var featureName = args[0];
       if (args.length > 1) {
         featureVersion = args[1];
       }
@@ -206,7 +198,7 @@ var semver = require('semver');
     }
   }]);
 
-  ng.directive('hideIfFeature', ['featureToggle', function hideIfFeature(featureToggle) {
+  ng.directive('ngFeatureHide', ['featureToggle', function hideIfFeature(featureToggle) {
     var ddo = {
       restrict: 'AE',
       transclude: 'element',
@@ -217,14 +209,6 @@ var semver = require('semver');
 
     return ddo;
 
-    /**
-     *
-     * @param scope
-     * @param element
-     * @param attrs
-     * @param ctrl
-     * @param $transclude
-     */
     function link(scope, element, attrs, ctrl, $transclude) {
       var featureEl, childScope, featureName;
       var featureVersion = '*';

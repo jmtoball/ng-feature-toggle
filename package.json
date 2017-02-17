@@ -1,23 +1,25 @@
 {
-  "name": "angular-feature-toggle",
-  "version": "0.2.1",
-  "description": "feature toggling capabilities for angular",
+  "name": "ng-feature-toggle",
+  "version": "0.0.1",
+  "description": "feature toggling for angular",
   "main": "dist/angular-feature-toggle.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mixpo/angular-feature-toggle.git"
+    "url": "https://github.com/abandon-ship/ng-feature-toggle"
   },
   "keywords": [
     "angular",
     "feature-toggle"
   ],
-  "author": "yairhaimo",
-  "contributors": [{
-    "name": "Hays Clark", "email": "hclark@mixpo.com"
-  }],
+  "author": "Abandon Ship",
+  "contributors": [
+    {"name": "Daan van Hulst"}, 
+    {"name": "Max Sassen"}, 
+    {"name": "Luuk Moret"}
+  ],
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
