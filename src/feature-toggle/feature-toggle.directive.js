@@ -17,13 +17,11 @@ export default function (featureToggle, $log) {
 
       if (featureState === 'on') {
         // $log.debug('%s is on', featureName);
-        childScope = scope.$new();
         $transclude(featureEl => {
           element.after(featureEl).remove();
         });
       } else if (featureState === 'disabled') {
         // $log.debug('%s is disabled', featureName);
-        childScope = scope.$new();
         $transclude(featureEl => {
           featureEl[0].disabled = true;
           element.after(featureEl).remove();
