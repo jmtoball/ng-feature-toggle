@@ -9,8 +9,7 @@ export default class FeatureToggleProvider {
   }
 
   /**
-   *
-   * @returns {{featureToggle: state}}
+   * @returns state [off, on, disabled]
    */
   $get() {
     return {
