@@ -17,8 +17,8 @@ export default function (featureToggleProvider, $injector) {
       // the app uses ui.router, configure it
       const oldStateFn = $stateProvider.state;
       $stateProvider.state = function (name, conf) {
-        // enable state if feature version is satisfied or undefined
-        if (featureToggleProvider.isDisabled(conf.feature || name)) {
+        const featureState = featureToggleProvider.getFeatureState(conf.feature || name);
+        if (!featureState || featureState === 'off') {
           try {
             return oldStateFn.call($stateProvider, name, conf);
           } catch (e) {
