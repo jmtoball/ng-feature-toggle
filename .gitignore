@@ -1,11 +1,4 @@
-# IDEs
-.idea/
-
-# package managers
-bower_components/
-node_modules/
-
-# build elements
 .tmp/
+coverage/
 dist/
-build/
+node_modules/
