@@ -2,13 +2,14 @@
 <html ng-app="featureToggle">
   <head>
     <meta charset="utf-8">
-    <title>FountainJS</title>
+    <title>FeatureToggle</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
   </head>
 
   <body>
-    <div feature-toggle="test">This should not load</div>
-    <div feature-toggle="supertest">This should load</div>
+    <input feature-toggle="test" placeholder="This should not load"></input>
+    <input feature-toggle="supertest" placeholder="This should be loaded "></input>    
+    <input feature-toggle="disabledtest" placeholder="This should be disabled"></input>
   </body>
 </html>

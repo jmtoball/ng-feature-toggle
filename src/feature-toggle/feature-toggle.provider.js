@@ -1,7 +1,11 @@
 export default class FeatureToggleProvider {
   /** @ngInject */
   constructor() {
-    this.features = [{name: 'test', state: 'off'}, {name: 'supertest', state: 'on'}];
+    this.features = [
+      {name: 'test', state: 'off'},
+      {name: 'supertest', state: 'on'},
+      {name: 'disabledtest', state: 'disabled'}
+    ];
   }
 
   /**
