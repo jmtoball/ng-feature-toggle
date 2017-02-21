@@ -70,7 +70,7 @@ module.exports = {
     //filename: '[name]-[hash].js'
   },
   entry: {
-    featureToggle: `./${conf.path.src('index')}`
-    //, vendor: Object.keys(pkg.dependencies)
+    featureToggle: `./${conf.path.src('index')}`,
+    vendor: Object.keys(pkg.dependencies)
   }
 };
