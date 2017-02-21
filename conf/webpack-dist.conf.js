@@ -50,14 +50,14 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     FailPlugin,
-    new HtmlWebpackPlugin({
-      template: conf.path.src('index.html')
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: conf.path.src('index.html')
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
     }),
     new ExtractTextPlugin('index-[contenthash].css'),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
+    //new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: () => [autoprefixer]
@@ -66,10 +66,11 @@ module.exports = {
   ],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
-    filename: '[name]-[hash].js'
+    filename: '[name].js'
+    //filename: '[name]-[hash].js'
   },
   entry: {
-    app: `./${conf.path.src('index')}`,
-    vendor: Object.keys(pkg.dependencies)
+    featureToggle: `./${conf.path.src('index')}`
+    //, vendor: Object.keys(pkg.dependencies)
   }
 };
