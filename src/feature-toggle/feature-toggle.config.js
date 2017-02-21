@@ -2,7 +2,6 @@
 /** @ngInject */
 export default function (featureToggleProvider, $injector) {
   overrideUIRouterStateFn($injector, featureToggleProvider);
-
   /**
    * config ui router
    *
@@ -13,7 +12,6 @@ export default function (featureToggleProvider, $injector) {
   function overrideUIRouterStateFn($injector, featureToggleProvider) {
     try {
       const $stateProvider = $injector.get('$stateProvider');
-
       // the app uses ui.router, configure it
       const oldStateFn = $stateProvider.state;
       $stateProvider.state = function (name, conf) {
