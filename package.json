@@ -4,7 +4,7 @@
   "author": "Abandon-ship",
   "title":"Angular Feature Toggle",
   "description":"Feature Toggle module for Angular JS",
-  "main": "src/index.js",
+  "main": "dist/featureToggle.js",
   "keywords": [
     "angular",
     "feature toggle",
