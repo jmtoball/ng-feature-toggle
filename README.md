@@ -38,7 +38,7 @@ The flag data that drives the feature toggle service is a json format. Below is 
 </table>
 
 
-### Setting flag data
+### Setting flag data (not working yet)
 
 Flag data can be set via the `featureToggleService` service using the `set` method. This currently accepts either a [HttpPromise](https://docs.angularjs.org/api/ng/service/$http) or a regular [Promise](https://docs.angularjs.org/api/ng/service/$q). The promise must resolve to a valid collection of [flag data](#flag-data).
 
@@ -51,8 +51,10 @@ You can also initialize the feature flags in the config phase of your applicatio
 var myApp = angular.module('app', ['featureToggle']);
 
 myApp.config(function(featureToggleProvider) {
-  featureFlagsProvider.setInitialFlags([
-    { "key": "...", "active": "...", "name": "...", "description": "..." },
+  featureFlagsProvider.setFeatures([
+          {name: 'test', state: 'off'},
+          {name: 'supertest', state: 'on'},
+          {name: 'disabledtest', state: 'disabled'}
   ]);
 });
 ```
