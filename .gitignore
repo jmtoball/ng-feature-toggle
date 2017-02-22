@@ -1,3 +1,4 @@
 .tmp/
+.history/
 coverage/
 node_modules/

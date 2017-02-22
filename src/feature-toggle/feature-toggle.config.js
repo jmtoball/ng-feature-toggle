@@ -2,6 +2,13 @@
 /** @ngInject */
 export default function (featureToggleProvider, $injector) {
   overrideUIRouterStateFn($injector, featureToggleProvider);
+
+  featureToggleProvider.setFeatures([
+          {name: 'test', state: 'off'},
+          {name: 'supertest', state: 'on'},
+          {name: 'disabledtest', state: 'disabled'}
+  ]);
+
   /**
    * config ui router
    *
