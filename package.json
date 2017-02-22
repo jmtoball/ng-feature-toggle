@@ -1,10 +1,10 @@
 {
   "name":"ng-feature-toggle",
-  "version": "0.1.4-beta",
+  "version": "0.1.5-beta",
   "author": "Abandon-ship",
   "title":"Angular Feature Toggle",
   "description":"Feature Toggle module for Angular JS",
-  "main": "src/index.js",
+  "main": "dist/featureToggle.js",
   "keywords": [
     "angular",
     "feature toggle",
