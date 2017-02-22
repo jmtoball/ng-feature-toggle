@@ -12,7 +12,7 @@ export default function (featureToggle) {
       const featureName = attrs.featureToggle;
       let featureState = featureToggle.getFeatureState(featureName);
       if (featureState) {
-        featureState = featureState.toLower();
+        featureState = featureState.toLowerCase();
       }
 
       if (featureState === 'on') {
