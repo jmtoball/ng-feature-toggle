@@ -78,6 +78,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function (featureToggleProvider, $injector) {
   overrideUIRouterStateFn.$inject = ["$injector", "featureToggleProvider"];
   overrideUIRouterStateFn($injector, featureToggleProvider);
+
   /**
    * config ui router
    *
@@ -166,7 +167,7 @@ exports.default = function (featureToggle, $log) {
 /***/ function(module, exports) {
 
 "use strict";
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -181,35 +182,50 @@ var FeatureToggleProvider = function () {
   function FeatureToggleProvider() {
     _classCallCheck(this, FeatureToggleProvider);
 
-    this.features = [{ name: 'test', state: 'off' }, { name: 'supertest', state: 'on' }, { name: 'disabledtest', state: 'disabled' }];
+    this.features = [];
   }
 
-  /**
-   * @returns state =  [off, on, disabled]
-   */
-
-
   _createClass(FeatureToggleProvider, [{
-    key: '$get',
+    key: "getFeatureState",
+    value: function getFeatureState(featureName) {
+      var result = this.features.find(function (feature) {
+        return featureName === feature.name;
+      });
+
+      return result ? result.state : null;
+    }
+  }, {
+    key: "getFeatures",
+    value: function getFeatures() {
+      return this.features;
+    }
+  }, {
+    key: "setFeatures",
+    value: function setFeatures(features) {
+      if (features instanceof Array) {
+        this.features = features;
+      }
+      return this.features;
+    }
+
+    /**
+     * @returns state =  [off, on, disabled]
+     */
+
+  }, {
+    key: "$get",
     value: function $get() {
       var _this = this;
 
       return {
-        getFeatureState: function getFeatureState(featureName) {
-          var result = _this.features.find(function (feature) {
-            return featureName === feature.name;
-          });
-
-          return result ? result.state : null;
-        },
         getFeatures: function getFeatures() {
-          return _this.features;
+          return _this.getFeatures();
         },
-        replaceFeatures: function replaceFeatures(newFeatures) {
-          if (newFeatures instanceof Array) {
-            _this.features = newFeatures;
-          }
-          return _this.features;
+        getFeatureState: function getFeatureState(featureName) {
+          return _this.getFeatureState(featureName);
+        },
+        setFeatures: function setFeatures(features) {
+          return _this.setFeatures(features);
         }
       };
     }
