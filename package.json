@@ -1,10 +1,11 @@
 {
-  "name":"ng-feature-toggle",
-  "version": "0.1.5-beta",
+  "name": "ng-feature-toggle",
+  "version": "0.1.6-beta",
   "author": "Abandon-ship",
-  "title":"Angular Feature Toggle",
-  "description":"Feature Toggle module for Angular JS",
+  "title": "Angular Feature Toggle",
+  "description": "Feature Toggle module for Angular JS",
   "main": "dist/featureToggle.js",
+  "url": "https://github.com/abandon-ship/ng-feature-toggle",
   "keywords": [
     "angular",
     "feature toggle",
@@ -12,8 +13,7 @@
     "feature flag"
   ],
   "dependencies": {
-    "angular": "^1.5.0",
-    "angular-local-storage": "^0.5.2"
+    "angular": "^1.5.0"
   },
   "devDependencies": {
     "@types/angular": "^1.5.16",

@@ -53,11 +53,11 @@ module.exports = {
     // new HtmlWebpackPlugin({
     //   template: conf.path.src('index.html')
     // }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
+    // }),
     new ExtractTextPlugin('[name].css'),
-    //new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: () => [autoprefixer]
@@ -70,8 +70,7 @@ module.exports = {
     //filename: '[name]-[hash].js'
   },
   entry: {
-    featureToggle: `./${conf.path.src('index')}`
-    //,
-    // vendor: Object.keys(pkg.dependencies)
+    featureToggle: `./${conf.path.src('index')}`,
+    vendor: Object.keys(pkg.dependencies)
   }
 };

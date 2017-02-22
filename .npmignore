@@ -1,0 +1,14 @@
+src
+coverage
+gulp_tasks
+conf
+.editconfig
+.gitattributes
+node_modules/
+.tmp/
+.travis.yml
+.yo-rc.json
+cicle.yml
+debug.log
+gulpfile.js
+yarn.lock
