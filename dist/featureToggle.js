@@ -120,7 +120,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (featureToggle, $log) {
+exports.default = function (featureToggle) {
   return {
     restrict: 'AE',
     transclude: 'element',
@@ -129,26 +129,23 @@ exports.default = function (featureToggle, $log) {
     link: function link(scope, element, attrs, ctrl, $transclude) {
       var featureEl = void 0;
       var childScope = void 0;
-      // Enable for multiple feature
-      // const args = attrs.featureToggle.split(/\s+/);
-      // const featureName = args[0];
+
       var featureName = attrs.featureToggle;
       var featureState = featureToggle.getFeatureState(featureName);
-      $log.debug(featureState);
+      if (featureState) {
+        featureState = featureState.toLower();
+      }
 
       if (featureState === 'on') {
-        // $log.debug('%s is on', featureName);
         $transclude(function (featureEl) {
           element.after(featureEl).remove();
         });
       } else if (featureState === 'disabled') {
-        // $log.debug('%s is disabled', featureName);
         $transclude(function (featureEl) {
           featureEl[0].disabled = true;
           element.after(featureEl).remove();
         });
       } else {
-        // $log.debug('%s should be destroyed', featureName);
         if (childScope) {
           childScope.$destroy();
           childScope = null;
