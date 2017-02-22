@@ -1,6 +1,6 @@
 ## angular-feature-toggle
 
-An AngularJS module that allows you to control when you release new features in your app or use it on the users authorization by putting them behind feature toggle/switches. **This module only supports Angular v1.5 and up.**
+An AngularJS module that allows you to control when you release new features in your app or use it on the users authorization by putting them behind feature toggle/switches. **This module should work with angular 1.2 and up, but has only been tested on Angular v1.5 and up.**
 
 
 ### The idea
