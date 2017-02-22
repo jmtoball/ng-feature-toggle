@@ -1,6 +1,6 @@
 {
   "name": "ng-feature-toggle",
-  "version": "0.1.6",
+  "version": "0.1.6-alpha",
   "author": "Abandon-ship",
   "title": "Angular Feature Toggle",
   "description": "Feature Toggle module for Angular JS",
