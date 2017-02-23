@@ -91,9 +91,10 @@ exports.default = function (featureToggleProvider, $injector) {
       var $stateProvider = $injector.get('$stateProvider');
       // the app uses ui.router, configure it
       var oldStateFn = $stateProvider.state;
+
       $stateProvider.state = function (name, conf) {
-        var featureState = featureToggleProvider.getFeatureState(conf.feature || name);
-        if (!featureState || featureState === 'off') {
+        var featureStatus = featureToggleProvider.getFeatureStatus(conf.feature || name);
+        if (!featureStatus || featureStatus === 'off') {
           try {
             return oldStateFn.call($stateProvider, name, conf);
           } catch (e) {
@@ -131,16 +132,16 @@ exports.default = function (featureToggle) {
       var childScope = void 0;
 
       var featureName = attrs.featureToggle;
-      var featureState = featureToggle.getFeatureState(featureName);
-      if (featureState) {
-        featureState = featureState.toLowerCase();
+      var featureStatus = featureToggle.getFeatureStatus(featureName);
+      if (featureStatus) {
+        featureStatus = featureStatus.toLowerCase();
       }
 
-      if (featureState === 'on') {
+      if (featureStatus === 'on') {
         $transclude(function (featureEl) {
           element.after(featureEl).remove();
         });
-      } else if (featureState === 'disabled') {
+      } else if (featureStatus === 'disabled') {
         $transclude(function (featureEl) {
           featureEl[0].disabled = true;
           element.after(featureEl).remove();
@@ -183,13 +184,13 @@ var FeatureToggleProvider = function () {
   }
 
   _createClass(FeatureToggleProvider, [{
-    key: "getFeatureState",
-    value: function getFeatureState(featureName) {
+    key: "getFeatureStatus",
+    value: function getFeatureStatus(featureName) {
       var result = this.features.find(function (feature) {
         return featureName === feature.name;
       });
 
-      return result ? result.state : null;
+      return result ? result.status : null;
     }
   }, {
     key: "getFeatures",
@@ -206,7 +207,7 @@ var FeatureToggleProvider = function () {
     }
 
     /**
-     * @returns state =  [off, on, disabled]
+     * @returns status =  [off, on, disabled]
      */
 
   }, {
@@ -218,8 +219,8 @@ var FeatureToggleProvider = function () {
         getFeatures: function getFeatures() {
           return _this.getFeatures();
         },
-        getFeatureState: function getFeatureState(featureName) {
-          return _this.getFeatureState(featureName);
+        getFeatureStatus: function getFeatureStatus(featureName) {
+          return _this.getFeatureStatus(featureName);
         },
         setFeatures: function setFeatures(features) {
           return _this.setFeatures(features);

@@ -10,16 +10,16 @@ export default function (featureToggle) {
       let childScope;
 
       const featureName = attrs.featureToggle;
-      let featureState = featureToggle.getFeatureState(featureName);
-      if (featureState) {
-        featureState = featureState.toLowerCase();
+      let featureStatus = featureToggle.getFeatureStatus(featureName);
+      if (featureStatus) {
+        featureStatus = featureStatus.toLowerCase();
       }
 
-      if (featureState === 'on') {
+      if (featureStatus === 'on') {
         $transclude(featureEl => {
           element.after(featureEl).remove();
         });
-      } else if (featureState === 'disabled') {
+      } else if (featureStatus === 'disabled') {
         $transclude(featureEl => {
           featureEl[0].disabled = true;
           element.after(featureEl).remove();

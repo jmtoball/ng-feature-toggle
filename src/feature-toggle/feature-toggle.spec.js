@@ -8,7 +8,7 @@ describe('featureToggle', () => {
 
   beforeEach(angular.mock.inject(($rootScope, $compile, _featureToggle_) => {
     featureToggle = _featureToggle_;
-    featureToggle.setFeatures([{name: "test", state: "on"}, {name: "supertest", state: "off"}, {name: "disabledtest", state: "disabled"}]);
+    featureToggle.setFeatures([{name: "test", status: "on"}, {name: "supertest", status: "off"}, {name: "disabledtest", status: "disabled"}]);
     element = angular.element(
       '<div feature-toggle="supertest">Some text</div>'
     );

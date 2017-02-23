@@ -22,7 +22,7 @@ You can then add the **override** panel to your app and turn individual features
 The flag data that drives the feature toggle service is a json format. Below is an example:
 ```json
 [
-    { "name": "...", "state": "..." },
+    { "name": "...", "status": "..." },
     ...
 ]
 ```
@@ -32,7 +32,7 @@ The flag data that drives the feature toggle service is a json format. Below is 
     <td>Unique key that is used from the markup to resolve whether a flag is active or not. (A short name of the flag )</td>
    </tr>
    <tr>
-    <td><b>state</b></td>
+    <td><b>status</b></td>
     <td>Value for on/disabling/off the feature</td>
    </tr>
 </table>
@@ -52,9 +52,9 @@ var myApp = angular.module('app', ['featureToggle']);
 
 myApp.config(function(featureToggleProvider) {
   featureFlagsProvider.setFeatures([
-          {name: 'test', state: 'off'},
-          {name: 'supertest', state: 'on'},
-          {name: 'disabledtest', state: 'disabled'}
+          {name: 'test', status: 'off'},
+          {name: 'supertest', status: 'on'},
+          {name: 'disabledtest', status: 'disabled'}
   ]);
 });
 ```

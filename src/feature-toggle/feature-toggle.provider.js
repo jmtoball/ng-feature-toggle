@@ -4,12 +4,12 @@ export default class FeatureToggleProvider {
     this.features = [];
   }
 
-  getFeatureState(featureName) {
+  getFeatureStatus(featureName) {
     const result = this.features.find(feature => {
       return featureName === feature.name;
     });
 
-    return result ? result.state : null;
+    return result ? result.status : null;
   }
 
   getFeatures() {
@@ -24,12 +24,12 @@ export default class FeatureToggleProvider {
   }
 
   /**
-   * @returns state =  [off, on, disabled]
+   * @returns status =  [off, on, disabled]
    */
   $get() {
     return {
       getFeatures: () => this.getFeatures(),
-      getFeatureState: featureName => this.getFeatureState(featureName),
+      getFeatureStatus: featureName => this.getFeatureStatus(featureName),
       setFeatures: features => this.setFeatures(features)
     };
   }
