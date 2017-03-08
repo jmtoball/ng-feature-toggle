@@ -130,9 +130,9 @@ exports.default = function (featureToggle) {
     link: function link(scope, element, attrs, ctrl, $transclude) {
       var featureEl = void 0;
       var childScope = void 0;
-
       var featureName = attrs.featureToggle;
       var featureStatus = featureToggle.getFeatureStatus(featureName);
+
       if (featureStatus) {
         featureStatus = featureStatus.toLowerCase();
       }
@@ -144,6 +144,7 @@ exports.default = function (featureToggle) {
       } else if (featureStatus === 'disabled') {
         $transclude(function (featureEl) {
           featureEl[0].disabled = true;
+          featureEl.addClass('disabled');
           element.after(featureEl).remove();
         });
       } else {
