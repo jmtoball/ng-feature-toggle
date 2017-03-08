@@ -8,9 +8,9 @@ export default function (featureToggle) {
     link: (scope, element, attrs, ctrl, $transclude) => {
       let featureEl;
       let childScope;
-
       const featureName = attrs.featureToggle;
       let featureStatus = featureToggle.getFeatureStatus(featureName);
+
       if (featureStatus) {
         featureStatus = featureStatus.toLowerCase();
       }
@@ -22,6 +22,7 @@ export default function (featureToggle) {
       } else if (featureStatus === 'disabled') {
         $transclude(featureEl => {
           featureEl[0].disabled = true;
+          featureEl.addClass('disabled');
           element.after(featureEl).remove();
         });
       } else {

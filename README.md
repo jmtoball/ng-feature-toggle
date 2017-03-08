@@ -12,7 +12,11 @@ Abstracting your application functionality into small chunks and implementing th
 
 The basic premise is you write your feature and wrap it up in a component/module, then where you implement that component in you add the **feature-toggle** to the same element. You can then pass the **key** of the toggle to this directive to resolve whether of not this feature should be enabled.
 
-The module pulls a json file down which defines the feature toggle and which ones are active. If 'ON' angular will process the directive as normal, if 'DISABLED' angular will tag the element as disabled and when 'OFF' angular will remove the element from the dom and not compile or execute any other directives is has.
+The module pulls a json file down which defines the feature toggle and which ones are active. 
+
+- '**ON**': Angular will process the directive as normal. 
+- '**DISABLED**': Angular will tag the element as disabled and add a 'disabled' class. 
+- '**OFF**': Angular will remove the element from the dom and not compile or execute any other directives is has.
 
 You can then add the **override** panel to your app and turn individual features on override the server values, saving the override in local storage which is useful in development.
 
@@ -28,7 +32,7 @@ The flag data that drives the feature toggle service is a json format. Below is 
 ```
 <table>
    <tr>
-    <td><b>key</b></td>
+    <td><b>name</b></td>
     <td>Unique key that is used from the markup to resolve whether a flag is active or not. (A short name of the flag )</td>
    </tr>
    <tr>
@@ -36,12 +40,6 @@ The flag data that drives the feature toggle service is a json format. Below is 
     <td>Value for on/disabling/off the feature</td>
    </tr>
 </table>
-
-
-### Setting flag data (not working yet)
-
-Flag data can be set via the `featureToggleService` service using the `set` method. This currently accepts either a [HttpPromise](https://docs.angularjs.org/api/ng/service/$http) or a regular [Promise](https://docs.angularjs.org/api/ng/service/$q). The promise must resolve to a valid collection of [flag data](#flag-data).
-
 
 ### Setting flag data on config phase
 
@@ -57,6 +55,25 @@ myApp.config(function(featureToggleProvider) {
           {name: 'disabledtest', status: 'disabled'}
   ]);
 });
+```
+
+### Setting flag data in controller
+
+Flag data can be set via the `featureToggle` service using the `set` method.
+
+```js
+var myApp = angular.module('app', ['featureToggle']);
+
+default class MyAppController {
+	// featureToggle service inject
+	constructor (featureToggle) {
+ 		featureToggle.setFeatures([
+          {name: 'test', status: 'off'},
+          {name: 'supertest', status: 'on'},
+          {name: 'disabledtest', status: 'disabled'}
+  		]);
+	}
+}
 ```
 
 ### Toggling elements
