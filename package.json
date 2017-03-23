@@ -5,7 +5,10 @@
   "title": "Angular Feature Toggle",
   "description": "Feature Toggle module for Angular JS",
   "main": "dist/featureToggle.js",
-  "url": "https://github.com/abandon-ship/ng-feature-toggle",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/abandon-ship/ng-feature-toggle"
+  },
   "keywords": [
     "angular",
     "feature toggle",
