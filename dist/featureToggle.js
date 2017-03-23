@@ -187,11 +187,14 @@ var FeatureToggleProvider = function () {
   _createClass(FeatureToggleProvider, [{
     key: "getFeatureStatus",
     value: function getFeatureStatus(featureName) {
-      var result = this.features.find(function (feature) {
-        return featureName === feature.name;
-      });
-
-      return result ? result.status : null;
+      var feature = null;
+      for (var i = 0; i < this.features.length; i++) {
+        if (featureName === this.features[i].name) {
+          feature = this.features[i].status;
+          break;
+        }
+      }
+      return feature;
     }
   }, {
     key: "getFeatures",
