@@ -5,11 +5,14 @@ export default class FeatureToggleProvider {
   }
 
   getFeatureStatus(featureName) {
-    const result = this.features.find(feature => {
-      return featureName === feature.name;
-    });
-
-    return result ? result.status : null;
+    let feature = null;
+    for (let i = 0; i < this.features.length; i++) {
+      if (featureName === this.features[i].name) {
+        feature = this.features[i].status;
+        break;
+      }
+    }
+    return feature;
   }
 
   getFeatures() {
