@@ -1,5 +1,4 @@
-/** @ngInject */
-export default function (featureToggle) {
+export default ['featureToggle', function (featureToggle) {
   return {
     restrict: 'AE',
     transclude: 'element',
@@ -37,4 +36,4 @@ export default function (featureToggle) {
       }
     }
   };
-}
+}];

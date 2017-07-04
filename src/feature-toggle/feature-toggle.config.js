@@ -1,6 +1,4 @@
-
-/** @ngInject */
-export default function (featureToggleProvider, $injector) {
+export default ['featureToggleProvider', '$injector', function (featureToggleProvider, $injector) {
   overrideUIRouterStateFn($injector, featureToggleProvider);
 
   /**
@@ -9,7 +7,6 @@ export default function (featureToggleProvider, $injector) {
    * @param $injector
    * @param featureToggleProvider
    */
-  /* @ngInject */
   function overrideUIRouterStateFn($injector, featureToggleProvider) {
     try {
       const $stateProvider = $injector.get('$stateProvider');
@@ -29,7 +26,7 @@ export default function (featureToggleProvider, $injector) {
         }
       };
     } catch (e) {
-        // the app doesnt use ui.router - silent failure
+      // the app doesnt use ui.router - silent failure
     }
   }
-}
+}];
