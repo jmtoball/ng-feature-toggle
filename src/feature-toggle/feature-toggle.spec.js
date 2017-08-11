@@ -9,7 +9,16 @@ describe('featureToggle', () => {
 
   beforeEach(angular.mock.inject(($rootScope, _$compile_, _featureToggle_) => {
     featureToggle = _featureToggle_;
-    featureToggle.setFeatures([{name: "test", status: "on"}, {name: "super_test", status: "off"}, {name: "disabledtest", status: "disabled"}]);
+    featureToggle.setFeatures([{
+      name: "test",
+      status: "on"
+    }, {
+      name: "super_test",
+      status: "off"
+    }, {
+      name: "disabledtest",
+      status: "disabled"
+    }]);
     $compile = _$compile_;
     scope = $rootScope.$new();
   }));

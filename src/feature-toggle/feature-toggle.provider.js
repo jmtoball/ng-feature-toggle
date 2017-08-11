@@ -1,5 +1,4 @@
 export default class FeatureToggleProvider {
-  /** @ngInject */
   constructor() {
     this.features = [];
   }
