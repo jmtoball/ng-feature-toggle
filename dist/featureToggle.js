@@ -74,9 +74,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-exports.default = function (featureToggleProvider, $injector) {
-  overrideUIRouterStateFn.$inject = ["$injector", "featureToggleProvider"];
+exports.default = ['featureToggleProvider', '$injector', function (featureToggleProvider, $injector) {
   overrideUIRouterStateFn($injector, featureToggleProvider);
 
   /**
@@ -85,7 +83,6 @@ exports.default = function (featureToggleProvider, $injector) {
    * @param $injector
    * @param featureToggleProvider
    */
-  /* @ngInject */
   function overrideUIRouterStateFn($injector, featureToggleProvider) {
     try {
       var $stateProvider = $injector.get('$stateProvider');
@@ -108,7 +105,7 @@ exports.default = function (featureToggleProvider, $injector) {
       // the app doesnt use ui.router - silent failure
     }
   }
-};
+}];
 
 /***/ },
 /* 1 */
@@ -120,8 +117,7 @@ exports.default = function (featureToggleProvider, $injector) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-exports.default = function (featureToggle) {
+exports.default = ['featureToggle', function (featureToggle) {
   return {
     restrict: 'AE',
     transclude: 'element',
@@ -159,7 +155,7 @@ exports.default = function (featureToggle) {
       }
     }
   };
-};
+}];
 
 /***/ },
 /* 2 */
@@ -177,7 +173,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var FeatureToggleProvider = function () {
-  /** @ngInject */
   function FeatureToggleProvider() {
     _classCallCheck(this, FeatureToggleProvider);
 
